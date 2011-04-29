@@ -6,7 +6,7 @@ import com.intersys.globals.impl.ConnectionImpl;
 
 /** <CODE>Connection</CODE> extends Globals Connection from which it
  * inherits all basic communication entry points. In addition to that
- * it also servers as a DocumentMap factory, and provides some schema
+ * it also servers as a DocumentMap factory, and provides schema
  * management methods.
  */
 
