@@ -1,0 +1,56 @@
+<project>
+
+    <property name="src" value="com/intersys/gds"/>
+    <property name="ant.jar" value="c:/perforce/dev/latest/thirdparty/apache-ant-1.7.1/lib/ant.jar"/>
+    <property environment="env"/>
+    <property name="javac.exe" value="${env.JAVA16_HOME}/bin/javac"/>
+
+    <property name="build.dir" value="../buildgds/classes"/>
+    <property name="jar.dir" value="dist/lib"/>
+    <property name="javadoc.dir" value="dist/doc"/>
+    <property name="globalsds.jar" value="${jar.dir}/globalsds.jar"/>
+
+    <target name="clean-build-dir">
+        <delete dir="${build.dir}"/>
+        <mkdir dir="${build.dir}"/>
+        <delete dir="dist"/>
+        <mkdir dir="dist"/>
+        <mkdir dir="dist/lib"/>
+        <mkdir dir="dist/doc"/>
+    </target>
+
+    <target name="compile">
+	<antcall target="clean-build-dir"/>
+        <javac debug="true" debuglevel="lines,source,vars" srcdir="${src}" destdir="${build.dir}" fork="yes" executable="${javac.exe}" source="1.6" target="1.6">
+	<exclude name="test/MongoTest.java"/>
+	<exclude name="test/TwentyStrings.java"/>
+	</javac>
+    </target>
+
+    <target name="gds" depends="compile">
+	<copy todir="${build.dir}/com/intersys/gds">
+	    <fileset dir="${src}">
+		<include name="**/*.java"/>
+		<exclude name="test/MongoTest.java"/>
+		<exclude name="test/TwentyStrings.java"/>
+	    </fileset>
+	</copy>
+        <jar manifest="manifest.gds" destfile="${globalsds.jar}" basedir="${build.dir}"/>
+    </target>
+
+    <target name="javadoc">
+	<delete dir="${javadoc.dir}"/>
+	<mkdir dir="${javadoc.dir}"/>
+	<javadoc destdir="${javadoc.dir}" windowtitle="InterSystems Globals Document Store">
+	    <doctitle>"Globals Document Store"</doctitle>
+	    <fileset dir="${src}">
+		<include name="**/*.java"/>
+		<exclude name="test/MongoTest.java"/>
+		<exclude name="test/TwentyStrings.java"/>
+	    </fileset>
+	</javadoc>
+    </target>
+
+    <target name="all" depends="gds, javadoc"/>
+
+</project>

@@ -1,0 +1,7 @@
+Specification-Title: Globals Document Store API
+Implementation-Title: Globals Document Store API
+Specification-Version: 1.0
+Implementation-Version: 1.0
+Specification-Vendor: InterSystems Corporation
+Implementation-Vendor: InterSystems Corporation
+Export-Package: com.intersys.gds, com.intersys.gds.query, com.intersys.gds.test, com.intersys.gds.noschema
