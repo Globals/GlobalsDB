@@ -71,7 +71,7 @@ public class GDSTest extends Test {
     * @param key key
     * @param pattern pattern argument
     */
-    void startsWith(String key, String pattern) {
+  public  void startsWith(String key, String pattern) {
         System.out.println("StartsWith query. Key = " + key + " startsWith " + pattern);
         Query query = new StartsWith(key,pattern);
         executeQuery(query);
@@ -85,7 +85,7 @@ public class GDSTest extends Test {
     * @param from second query from parameter
     * @param to second query to parameter
     */
-    void and(String key1, String pattern, String key2, int from, int to) {
+  public  void and(String key1, String pattern, String key2, int from, int to) {
         System.out.println("key1.startsWith(pattern) AND key2.between(from,to) query.");
         Query query = new And(new StartsWith(key1,pattern),new Between(key2,from,to));
         executeQuery(query);
@@ -98,7 +98,7 @@ public class GDSTest extends Test {
     * @param key2 key to be used in second sub-query
     * @param i2 GT query argument
      */
-    void or(String key1, int i1, String key2, int i2) {
+  public   void or(String key1, int i1, String key2, int i2) {
         System.out.println("(key1 < ?) OR (key2 > ?) query.");
         Query query = new Or(new LT(key1,i1),new GT(key2,i2));
         executeQuery(query);
@@ -112,7 +112,7 @@ public class GDSTest extends Test {
     * @param from from value
     * @param to to value
     */
-    void between(String key, int from, int to) {
+  public  void between(String key, int from, int to) {
         System.out.println("Between query. Key = " + key +" between: " + from + " and " + to);
         Query query = new Between(key,from,to);
         query.limit(15);
@@ -124,7 +124,7 @@ public class GDSTest extends Test {
     * @param key key
     * @param value value
     */
-    void equals(String key, Object value) {
+  public  void equals(String key, Object value) {
         System.out.println("Equals query. Key = " + key + ", Value = " + value);
         Query query = new Equals(key,value);
         executeQuery(query);
@@ -135,7 +135,7 @@ public class GDSTest extends Test {
     * @param key key
     * @param pattern pattern
     */
-    void patternMatch(String key, String pattern) {
+  public  void patternMatch(String key, String pattern) {
         System.out.println("Pattern Match query. Matching: " + pattern);
         Query query = new PatternMatch(key,pattern);
         executeQuery(query);

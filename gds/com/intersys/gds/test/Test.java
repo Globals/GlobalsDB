@@ -18,7 +18,7 @@ public abstract class Test extends BasicTest {
     * @param key key
     * @param pattern starts with pattern
     */
-   abstract void startsWith(String key, String pattern);
+   public abstract void startsWith(String key, String pattern);
 
    /** between query. Finds all elements whose values
     * corresponding to the given <CODE>key</CODE> are between
@@ -28,36 +28,36 @@ public abstract class Test extends BasicTest {
     * @param from from value
     * @param to to value
     */
-    abstract void between(String key, int from, int to);
+    public abstract void between(String key, int from, int to);
 
    /** Runs a sample And query by combining two conditions. 
     */
-    abstract void and(String key1, String pattern, String key2, int from, int to);
+    public abstract void and(String key1, String pattern, String key2, int from, int to);
 
    /** Runs a sample Or query by combining two conditions.
     */
-    abstract void or(String key1, int i1, String key2, int i2);
+    public abstract void or(String key1, int i1, String key2, int i2);
 
    /** Runs a sample Equals query.
     *
     * @param key key
     * @param value value to match
     */
-    abstract void equals(String key, Object value);
+   public abstract void equals(String key, Object value);
 
    /** Perform PatternMatch query.
     *
     * @param key key
     * @param pattern pattern
     */
-    abstract void patternMatch(String key, String pattern);
+    public abstract void patternMatch(String key, String pattern);
 
     /** Runs a simple test
      *
      * @param args program arguments
      * @throws Exception
      */
-    void runTest(String[] args) throws Exception {
+   public void runTest(String[] args) throws Exception {
         generateSampleData();
         init(args);
         deleteData();

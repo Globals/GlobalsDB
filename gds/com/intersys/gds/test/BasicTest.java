@@ -155,7 +155,8 @@ public abstract class BasicTest {
     * @return ArrayList an array list of customers
     *
     */
-    static ArrayList generateCustomers(Class documentClass) throws Exception {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	static ArrayList generateCustomers(Class documentClass) throws Exception {
         ArrayList<HashMap<String,Object>> customers = new ArrayList<HashMap<String,Object>>();
         for (int i=0;i<documentCount;i++) {
             HashMap<String,Object> customer = (HashMap<String, Object>) documentClass.newInstance();
